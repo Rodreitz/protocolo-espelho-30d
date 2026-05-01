@@ -8,6 +8,9 @@ import {
   ChevronDown,
   FileText,
   Monitor,
+  Mail,
+  PlayCircle,
+  CheckCircle2,
 } from 'lucide-react';
 
 /* ── Design system ── */
@@ -155,10 +158,10 @@ export default function App() {
               {/* Texto */}
               <div className="flex-1">
                 <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--fg)', textWrap: 'balance' } as React.CSSProperties}>
-                  Siga este protocolo de 30 dias e seque a barriga treinando em casa — sem abrir mão do fim de semana
+                  Pare de começar do zero toda semana. Em 30 dias treinando em casa, você vai finalmente ver o espelho mudar — desta vez até o fim.
                 </h1>
                 <p style={{ marginTop: '1rem', fontSize: '1.0625rem', color: 'var(--muted)', lineHeight: 1.7 }}>
-                  Você não precisa cortar tudo que gosta, nem ir para a academia. Precisa de um método que funcione com a sua vida real — inclusive no churrasco do sábado.
+                  Você não precisa de mais força de vontade. Precisa de um método feito para a sua vida real — que funcione mesmo quando você tropeça, erra o fim de semana ou pula um dia.
                 </p>
 
                 {/* Badges */}
@@ -187,9 +190,12 @@ export default function App() {
 
               {/* Mockup */}
               <div style={{ width: '100%', maxWidth: '26rem', margin: '1.5rem auto 0', flexShrink: 0 }}>
-                {/* SUBSTITUIR pela imagem do mockup: /assets/mockup-hero.png */}
-                <div style={{ width: '100%', aspectRatio: '4/3', borderRadius: '1.5rem', background: 'linear-gradient(135deg, #1a1a2e, #e63946)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1rem', fontWeight: 600, textAlign: 'center', padding: '2rem' }}>
-                  📱 Mockup do Produto<br /><span style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: '0.5rem', display: 'block' }}>/assets/mockup-hero.png</span>
+                <div style={{ width: '100%', borderRadius: '1.5rem', overflow: 'hidden' }}>
+                  <img
+                    src="/assets/mockup-hero.png"
+                    alt="Mockup do Protocolo Espelho 30D em celular, tablet e PDF"
+                    style={{ width: '100%', aspectRatio: '4/3', borderRadius: '1.5rem', display: 'block', objectFit: 'cover', boxShadow: '0 18px 45px rgba(26,26,46,0.16)' }}
+                  />
                 </div>
               </div>
             </div>
@@ -226,9 +232,12 @@ export default function App() {
                 { label: 'Carla, 40 anos', texto: 'Perdeu 5cm de cintura no primeiro mês' },
               ].map((d, i) => (
                 <div key={i} className="lt-card" style={{ overflow: 'hidden', breakInside: 'avoid', marginBottom: '1rem' }}>
-                  {/* SUBSTITUIR por print real: /assets/depo-{i+1}.jpg */}
-                  <div style={{ background: 'linear-gradient(135deg, #f5f5f0, #e8e8e0)', padding: '1.5rem', minHeight: 120, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: '0.25rem' }}>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--muted)', fontStyle: 'italic' }}>📷 /assets/depo-{i + 1}.jpg</span>
+                  <img
+                    src={`/assets/depo-${i + 1}.png`}
+                    alt={`Mockup visual de depoimento: ${d.label}`}
+                    style={{ width: '100%', display: 'block' }}
+                  />
+                  <div style={{ background: '#fff', padding: '1rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                     <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--fg)' }}>{d.label}</p>
                     <p style={{ fontSize: '0.8125rem', color: 'var(--muted)' }}>{d.texto}</p>
                   </div>
@@ -249,14 +258,22 @@ export default function App() {
               <span style={{ color: 'var(--primary)' }}>essa página é pra você.</span>
             </h2>
 
+            {/* Identificação — obrigatório pelo framework */}
+            <p style={{ marginTop: '1.5rem', fontSize: '1.0625rem', lineHeight: 1.8, color: 'var(--muted)', textAlign: 'center' }}>
+              Eu sei. Você já tentou mais de uma vez. Já perdeu a conta de quantas segundas-feiras foram o "Dia 1". E a pior parte não é não conseguir — é que você já quase não acredita mais que desta vez vai ser diferente.
+            </p>
+            <p style={{ marginTop: '0.75rem', fontSize: '1rem', fontWeight: 600, color: 'var(--fg)', textAlign: 'center' }}>
+              Por isso essa voz não para de aparecer na sua cabeça:
+            </p>
+
             {/* Vozes da Cabeça */}
-            <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
-                '"Fico bem a semana toda e no fim de semana arruíno tudo. Toda segunda começo do zero."',
+                '"Já perdi a conta de quantas vezes eu comecei. Toda segunda é o Dia 1 de novo. Já nem acredito que vou conseguir."',
+                '"Fico bem a semana toda e no fim de semana arruíno tudo. Depois a culpa corrói por dias."',
                 '"Trabalho, filho, casa — não sobra tempo pra mim. Quando sobra, estou cansada demais."',
-                '"Já tentei tanta dieta que nem me animo mais. Parece que meu corpo não responde."',
-                '"Me olho no espelho e não me reconheço. A barriga aparece em tudo, até nas fotos."',
-                '"Sei que preciso mudar, mas toda vez que começo, um aniversário ou churrasco me derruba."',
+                '"Já tentei tanta coisa que nem me animo mais. Meu corpo não muda, não importa o que eu faça."',
+                '"Me olho no espelho e não me reconheço. Antes eu me cuidava — hoje nem sei mais quem é essa mulher."',
               ].map((voz, i) => (
                 <div key={i} className="lt-quote">
                   <p style={{ fontSize: '1rem', fontStyle: 'italic', color: 'var(--fg)', lineHeight: 1.6 }}>{voz}</p>
@@ -267,7 +284,7 @@ export default function App() {
             {/* Diagnóstico */}
             <div style={{ marginTop: '2rem', borderRadius: '1.25rem', background: 'white', padding: '1.75rem', boxShadow: '0 8px 30px rgba(26,26,46,0.05)' }}>
               <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: 'var(--muted)', margin: 0 }}>
-                Não é falta de força de vontade. O problema é que a maioria dos programas de treino e dieta foi criado para pessoas <strong style={{ color: 'var(--fg)' }}>sem vida social e sem agenda cheia</strong>. Eles ignoram que você tem um churrasco no sábado, que precisa de resultado rápido para se motivar a continuar, e que 1 hora de treino às 6h da manhã simplesmente não existe na sua rotina.
+                Não é falta de força de vontade. Não é fraqueza. O problema é que a maioria dos programas foi feito para quem começa e <strong style={{ color: 'var(--fg)' }}>tem tudo disponível</strong> — sem filhos, sem trabalho, sem vida social. Eles não foram construídos para sobreviver à sua realidade. E quando você cai, eles não têm resposta. Por isso você volta à estaca zero. Por isso toda segunda parece um recomeço igual ao anterior.
               </p>
             </div>
 
@@ -397,8 +414,11 @@ export default function App() {
                 <div key={i} className="lt-card" style={{ overflow: 'hidden' }}>
                   <div className={`lt-deliv-inner${i % 2 === 1 ? ' lt-rev' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
                     <div className="lt-deliv-img" style={{ overflow: 'hidden', background: '#f0f0eb', minHeight: 160, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      {/* SUBSTITUIR pela imagem: {item.img} */}
-                      <span style={{ fontSize: '0.75rem', color: 'var(--muted)', padding: '1rem', textAlign: 'center' }}>📷 {item.img}</span>
+                      <img
+                        src={item.img}
+                        alt={`Mockup do entregavel ${item.title}`}
+                        style={{ width: '100%', height: 'auto', display: 'block' }}
+                      />
                     </div>
                     <div className="lt-deliv-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.75rem', padding: '1.5rem 2rem' }}>
                       <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -433,8 +453,11 @@ export default function App() {
               <div className="lt-card" style={{ overflow: 'hidden' }}>
                 <div className="lt-deliv-inner lt-rev" style={{ display: 'flex', flexDirection: 'column' }}>
                   <div className="lt-deliv-img" style={{ overflow: 'hidden', background: '#f0f0eb', minHeight: 160, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {/* SUBSTITUIR pela imagem: /assets/bonus-1.png */}
-                    <span style={{ fontSize: '0.75rem', color: 'var(--muted)', padding: '1rem', textAlign: 'center' }}>📷 /assets/bonus-1.png</span>
+                    <img
+                      src="/assets/bonus-1.png"
+                      alt="Mockup do bonus Planejamento Alimentar para Definicao"
+                      style={{ width: '100%', height: 'auto', display: 'block' }}
+                    />
                   </div>
                   <div className="lt-deliv-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.75rem', padding: '1.5rem 2rem' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, borderRadius: 9999, background: 'rgba(244,162,97,0.15)', padding: '0.25rem 0.875rem', fontSize: '0.75rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.08em', alignSelf: 'flex-start' }}>
@@ -458,16 +481,16 @@ export default function App() {
 
             <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
-                'Você treina ou tenta treinar durante a semana, mas o fim de semana bota tudo a perder',
+                'Você já começou mais de uma vez — e desta vez quer chegar até o fim',
+                'Você está cansada de sentir que nunca evolui, mesmo quando tenta',
                 'Você quer um treino em casa, de 20 a 30 minutos, sem precisar de equipamento',
                 'Você está com a barriga inchada e quer firmar o corpo de forma progressiva',
-                'Você quer parar de começar do zero toda segunda-feira',
-                'Você quer curtir o fim de semana sem culpa E ainda assim ter resultado',
-                'Você quer um método progressivo, não treino aleatório jogado na internet',
+                'Você quer curtir o fim de semana sem destruir tudo que construiu na semana',
+                'Você quer um método que funcione com a sua vida real — não com uma versão idealizada dela',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderRadius: '1rem', background: 'white', padding: '1rem 1.5rem', textAlign: 'left', boxShadow: '0 4px 20px rgba(26,26,46,0.04)' }}>
-                  <div style={{ display: 'flex', height: 32, width: 32, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: '50%', background: 'rgba(230,57,70,0.1)' }}>
-                    <Check style={{ height: 16, width: 16, color: 'var(--primary)' }} />
+                  <div style={{ display: 'flex', height: 32, width: 32, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: '50%', background: 'rgba(22,163,74,0.1)' }}>
+                    <Check style={{ height: 16, width: 16, color: 'var(--success)' }} />
                   </div>
                   <span style={{ fontSize: '1rem', color: 'var(--fg)' }}>{item}</span>
                 </div>
@@ -493,34 +516,40 @@ export default function App() {
         </section>
 
         {/* ════════════════ 8. ANCORAGEM DE PREÇO ════════════════ */}
+        {/* Formato prescrito: entregáveis com valores riscados — sem botão de compra */}
         <section className="lt-section">
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance', marginBottom: '2rem' } as React.CSSProperties}>
-              Quanto valeria cada parte desse protocolo?
+              Recapitulando tudo que você vai receber no Protocolo Espelho 30D:
             </h2>
 
             <div style={{ borderRadius: '1.5rem', background: 'white', boxShadow: '0 10px 40px rgba(26,26,46,0.06)', overflow: 'hidden' }}>
               {[
-                { nome: '1 mês de academia (sem personal)', valor: 'R$ 80–120' },
-                { nome: '1 sessão com personal trainer presencial', valor: 'R$ 80–150' },
-                { nome: 'Consultoria nutricional online', valor: 'R$ 150–300' },
-                { nome: 'Programa completo de transformação corporal', valor: 'R$ 297–997' },
+                { nome: 'Plataforma de Treinos 30D', valor: 'R$ 97,00' },
+                { nome: 'Guia do Fim de Semana Sem Culpa', valor: 'R$ 67,00' },
+                { nome: '10 Hábitos Que Aceleram em 7 Dias', valor: 'R$ 47,00' },
+                { nome: 'BÔNUS: Planejamento Alimentar para Definição', valor: 'R$ 86,00' },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.5rem', borderBottom: '1px solid rgba(26,26,46,0.05)' }}>
-                  <span style={{ fontSize: '1rem', color: 'var(--fg)' }}>{item.nome}</span>
-                  <span style={{ flexShrink: 0, fontSize: '0.875rem', fontWeight: 600, color: 'var(--muted)', marginLeft: '1rem' }}>{item.valor}</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem', color: 'var(--fg)' }}>
+                    <Check style={{ height: 16, width: 16, flexShrink: 0, color: 'var(--success)' }} />
+                    {item.nome}
+                  </span>
+                  <span style={{ flexShrink: 0, fontSize: '0.875rem', color: '#dc2626', textDecoration: 'line-through', marginLeft: '1rem' }}>{item.valor}</span>
                 </div>
               ))}
-              <div style={{ background: 'rgba(26,26,46,0.02)', padding: '1rem 1.5rem' }}>
+              <div style={{ background: 'rgba(26,26,46,0.02)', padding: '1.25rem 1.5rem' }}>
                 <div className="lt-pricing-total">
-                  <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg)' }}>Total somado:</span>
-                  <span style={{ fontSize: '1.125rem', fontWeight: 700, color: '#dc2626', whiteSpace: 'nowrap' }}>R$ 607–1.567</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg)' }}>Tudo isso deveria custar:</span>
+                  <span style={{ fontSize: '1.5rem', fontWeight: 700, color: '#dc2626', textDecoration: 'line-through', whiteSpace: 'nowrap' }}>R$ 297,00</span>
                 </div>
               </div>
             </div>
 
-            <p style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '1.0625rem', color: 'var(--fg)', lineHeight: 1.7 }}>
-              Você leva <strong>TUDO</strong> do Protocolo Espelho 30D — 4 entregáveis completos — por menos do que uma única sessão de personal trainer.
+            <p style={{ marginTop: '1.75rem', textAlign: 'center', fontSize: '1.125rem', color: 'var(--fg)', lineHeight: 1.7 }}>
+              Mas hoje você tem acesso ao{' '}
+              <strong style={{ color: 'var(--primary)' }}>Protocolo Espelho 30D</strong>{' '}
+              com todos os bônus por apenas:
             </p>
           </div>
         </section>
@@ -531,50 +560,59 @@ export default function App() {
         <section id="oferta" ref={ofertaRef} className="lt-section">
           <div className="lt-orb" style={{ width: 600, height: 600, background: 'rgba(244,162,97,0.2)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance' } as React.CSSProperties}>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance', marginBottom: '2.5rem' } as React.CSSProperties}>
               Protocolo Espelho 30D — Acesso Imediato
             </h2>
-
-            {/* Line items com valores riscados */}
-            <div style={{ marginTop: '2.5rem', borderRadius: '1.5rem', background: 'white', boxShadow: '0 10px 40px rgba(26,26,46,0.06)', overflow: 'hidden' }}>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {[
-                  { nome: 'Plataforma de Treinos 30D', valor: 'R$ 97,00' },
-                  { nome: 'Guia do Fim de Semana Sem Culpa', valor: 'R$ 67,00' },
-                  { nome: '10 Hábitos Que Aceleram em 7 Dias', valor: 'R$ 47,00' },
-                  { nome: 'BÔNUS: Planejamento Alimentar para Definição', valor: 'R$ 86,00' },
-                ].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.5rem', borderBottom: '1px solid rgba(26,26,46,0.05)' }}>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem', color: 'var(--fg)' }}>
-                      <Check style={{ height: 16, width: 16, flexShrink: 0, color: 'var(--primary)' }} />
-                      {item.nome}
-                    </span>
-                    <span style={{ flexShrink: 0, fontSize: '0.875rem', color: '#dc2626', textDecoration: 'line-through' }}>
-                      {item.valor}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div style={{ borderTop: '1px solid rgba(26,26,46,0.05)', background: 'rgba(26,26,46,0.02)', padding: '1rem 1.5rem' }}>
-                <div className="lt-pricing-total">
-                  <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg)' }}>Tudo isso deveria custar:</span>
-                  <span style={{ fontSize: '1.125rem', fontWeight: 600, color: '#dc2626', textDecoration: 'line-through', whiteSpace: 'nowrap' }}>R$ 297,00</span>
-                </div>
-              </div>
-            </div>
-
-            <p style={{ marginTop: '2rem', marginBottom: '2.5rem', textAlign: 'center', fontSize: '1.125rem', color: 'var(--fg)' }}>
-              Mas hoje você pode ter acesso ao{' '}
-              <span style={{ color: 'var(--primary)', fontWeight: 700 }}>Protocolo Espelho 30D</span>{' '}
-              junto com todos os bônus por apenas:
-            </p>
 
             {/* ← BOTÃO DE COMPRA */}
             <CTABlock checkoutUrl={CHECKOUT_URL} />
           </div>
         </section>
 
-        {/* ════════════════ 10. CARTA ABERTA / DOIS CAMINHOS ════════════════ */}
+        {/* ════════════════ 10. PRÓXIMOS PASSOS / COMO RECEBER ════════════════ */}
+        <section className="lt-section" style={{ background: 'white' }}>
+          <div style={{ position: 'relative', zIndex: 10, maxWidth: '56rem', margin: '0 auto', padding: '0 1.25rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textWrap: 'balance' } as React.CSSProperties}>
+              Compre agora e receba seu acesso no e-mail imediatamente!
+            </h2>
+
+            <div style={{ marginTop: '3rem', display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
+              {[
+                {
+                  icon: <Mail style={{ height: 32, width: 32, color: 'var(--success)' }} />,
+                  num: '1',
+                  title: 'ACESSE SEU E-MAIL',
+                  desc: 'Em poucos minutos você recebe seu acesso na sua caixa de entrada.',
+                },
+                {
+                  icon: <PlayCircle style={{ height: 32, width: 32, color: 'var(--success)' }} />,
+                  num: '2',
+                  title: 'ACESSE O PRODUTO',
+                  desc: 'Você vai receber todos os materiais do Protocolo Espelho 30D imediatamente pra usar quando quiser.',
+                },
+                {
+                  icon: <CheckCircle2 style={{ height: 32, width: 32, color: 'var(--success)' }} />,
+                  num: '3',
+                  title: 'TUDO PRONTO!',
+                  desc: 'Abra o treino do dia 1, leia o Guia do Fim de Semana e comece hoje mesmo a construir o corpo que você quer.',
+                },
+              ].map((step, i) => (
+                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', padding: '2rem 1.5rem', borderRadius: '1.25rem', background: 'var(--bg)' }}>
+                  <div style={{ display: 'flex', height: 64, width: 64, alignItems: 'center', justifyContent: 'center', borderRadius: '50%', background: 'rgba(22,163,74,0.1)' }}>
+                    {step.icon}
+                  </div>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--success)' }}>
+                    Passo {step.num}
+                  </span>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--fg)' }}>{step.title}</h3>
+                  <p style={{ fontSize: '0.9375rem', color: 'var(--muted)', lineHeight: 1.65 }}>{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════ 11. CONVERSA SÉRIA / CARTA ABERTA ════════════════ */}
         <section className="lt-section">
           <div className="lt-orb" style={{ width: 500, height: 500, background: 'rgba(230,57,70,0.06)', top: 0, right: 0 }} />
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem', textAlign: 'center' }}>
@@ -592,7 +630,7 @@ export default function App() {
                   <X style={{ height: 20, width: 20, flexShrink: 0, marginTop: 2, color: 'var(--primary)' }} />
                   <div>
                     <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--primary)', marginBottom: '0.375rem' }}>Opção 1</p>
-                    <span style={{ fontSize: '1rem', color: 'var(--fg)', lineHeight: 1.6 }}>Fechar essa página, voltar para a rotina, e na próxima segunda começar de novo depois do fim de semana ter arruinado tudo.</span>
+                    <span style={{ fontSize: '1rem', color: 'var(--fg)', lineHeight: 1.6 }}>Fechar essa página, voltar para a rotina, e na próxima segunda começar de novo — mais uma vez. Sem saber o que vai ser diferente desta vez.</span>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.875rem', padding: '1rem 1.25rem', borderRadius: '1rem', background: 'rgba(22,163,74,0.04)', border: '1px solid rgba(22,163,74,0.15)' }}>
@@ -614,12 +652,15 @@ export default function App() {
           </div>
         </section>
 
-        {/* ════════════════ 11. AUTORIDADE ════════════════ */}
+        {/* ════════════════ 12. AUTORIDADE ════════════════ */}
         <section className="lt-section">
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '56rem', margin: '0 auto', padding: '0 1.25rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2.5rem' }}>
-            {/* SUBSTITUIR pela foto real: /assets/thiago.jpg */}
             <div style={{ height: 280, width: 280, flexShrink: 0, overflow: 'hidden', borderRadius: '1.5rem', boxShadow: '0 10px 40px rgba(26,26,46,0.08)', background: 'linear-gradient(135deg, #1a1a2e, #e63946)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ color: '#fff', fontSize: '0.875rem', textAlign: 'center', padding: '1rem' }}>📷 /assets/thiago.jpg</span>
+              <img
+                src="/assets/thiago.png"
+                alt="Foto de Thiago Benvenho"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', textAlign: 'center' }}>
               <h2 style={{ fontSize: 'clamp(1.875rem, 3vw, 2.25rem)', fontWeight: 700, color: 'var(--fg)' }}>
@@ -629,44 +670,32 @@ export default function App() {
                 Thiago Benvenho é personal trainer especializado em transformação corporal para mulheres com vida corrida. Com anos de experiência acompanhando clientes que não têm tempo para academia e que sempre "começavam na segunda", ele desenvolveu o método Espelho.
               </p>
               <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'var(--muted)' }}>
-                Um protocolo que respeita a realidade da mulher brasileira e gera resultado visível em 30 dias.{' '}
-                <strong style={{ color: 'var(--fg)' }}>Instagram: @thiagobenvenho</strong>
+                Um protocolo que respeita a realidade da mulher brasileira e gera resultado visível em 30 dias. Foi com esse método que mais de 200 mulheres pararam de começar do zero toda segunda-feira — e passaram a se olhar no espelho com orgulho.
+              </p>
+              <p style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg)' }}>
+                — Thiago Benvenho | Instagram: <span style={{ color: 'var(--primary)' }}>@thiagobenvenho</span>
               </p>
             </div>
           </div>
         </section>
 
         {/* ═══════════════════════════════════════════════
-            12. RECAP / SEGUNDA CHANCE DE COMPRA
+            13. RECAPITULAÇÃO DA OFERTA — cópia do bloco 9
             ═══════════════════════════════════════════════ */}
         <section id="oferta-2" className="lt-section">
           <div className="lt-orb" style={{ width: 600, height: 600, background: 'rgba(244,162,97,0.2)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
 
-            {/* Recap bullets */}
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance', marginBottom: '1.5rem' } as React.CSSProperties}>
-              Recapitulando o que você leva hoje:
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance', marginBottom: '2.5rem' } as React.CSSProperties}>
+              Protocolo Espelho 30D — Acesso Imediato
             </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem', maxWidth: '40rem', margin: '0 auto 2rem' }}>
-              {[
-                'Plataforma de Treinos 30D (7 treinos diários com vídeos, sem equipamento)',
-                'Guia do Fim de Semana Sem Culpa (churrasco, aniversário, pizza — com estratégia)',
-                '10 Hábitos Que Aceleram em 7 Dias',
-                'BÔNUS: Planejamento Alimentar para Definição',
-              ].map((item, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', padding: '0.75rem 1rem', background: 'white', borderRadius: '0.75rem', boxShadow: '0 2px 8px rgba(26,26,46,0.04)' }}>
-                  <Check style={{ height: 18, width: 18, flexShrink: 0, color: 'var(--success)', marginTop: 2 }} />
-                  <span style={{ fontSize: '1rem', color: 'var(--fg)' }}>{item}</span>
-                </div>
-              ))}
-            </div>
 
             {/* ← BOTÃO DE COMPRA (segunda chance) */}
             <CTABlock checkoutUrl={CHECKOUT_URL} />
           </div>
         </section>
 
-        {/* ════════════════ 13. FAQ ════════════════ */}
+        {/* ════════════════ 14. FAQ ════════════════ */}
         <section className="lt-section">
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center' }}>
@@ -709,13 +738,14 @@ export default function App() {
           </div>
         </section>
 
-        {/* ════════════════ 14. RODAPÉ LEGAL ════════════════ */}
+        {/* ════════════════ 15. RODAPÉ LEGAL ════════════════ */}
         <div className="lt-gradient-bar" />
         <footer style={{ background: 'var(--fg)', padding: '3rem 0', color: 'var(--bg)' }}>
           <div style={{ maxWidth: '72rem', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', padding: '0 1.25rem', textAlign: 'center' }}>
             <p style={{ fontSize: '1.25rem', fontWeight: 600 }}>Protocolo Espelho 30D</p>
             <p style={{ fontSize: '0.875rem', opacity: 0.6 }}>
-              Thiago Benvenho — Personal Trainer | Florianópolis, SC
+              Thiago Benvenho — Personal Trainer | Florianópolis, SC<br />
+              CNPJ: [CNPJ DO PRODUTOR]
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '1rem', fontSize: '0.875rem', opacity: 0.6 }}>
               <a href="mailto:contato@thiagobenvenho.com.br" style={{ color: 'inherit', textDecoration: 'none' }}>contato@thiagobenvenho.com.br</a>
@@ -743,15 +773,18 @@ export default function App() {
   );
 }
 
-/* ─── CTABlock — APENAS nos blocos 9 e 12 ─── */
+/* ─── CTABlock — APENAS nos blocos 9 e 13 ─── */
 function CTABlock({ checkoutUrl }: { checkoutUrl: string }) {
   return (
     <div style={{ borderRadius: '1.5rem', background: 'white', padding: '2rem', textAlign: 'center', boxShadow: '0 10px 50px rgba(26,26,46,0.08)', border: '2px solid rgba(22,163,74,0.2)' }}>
       {/* Mockup produto */}
       <div style={{ maxWidth: '24rem', margin: '0 auto 2rem' }}>
-        {/* SUBSTITUIR pela imagem: /assets/mockup-produto.png */}
         <div style={{ borderRadius: '1rem', overflow: 'hidden', boxShadow: '0 8px 30px rgba(26,26,46,0.08)', background: 'linear-gradient(135deg, #1a1a2e, #e63946)', minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <span style={{ color: '#fff', fontSize: '0.875rem', textAlign: 'center', padding: '1rem' }}>📷 /assets/mockup-produto.png</span>
+          <img
+            src="/assets/mockup-produto.png"
+            alt="Mockup completo dos entregaveis do Protocolo Espelho 30D"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
         </div>
       </div>
 
