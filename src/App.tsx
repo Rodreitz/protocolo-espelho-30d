@@ -10,6 +10,9 @@ import {
   Mail,
   PlayCircle,
   CheckCircle2,
+  Smartphone,
+  Calendar,
+  Sparkles,
 } from 'lucide-react';
 
 /* ── Design system ── */
@@ -123,6 +126,14 @@ const styles = `
     box-shadow: 0 2px 12px rgba(26,26,46,0.04);
   }
 
+  /* Imagem ruminações: full-bleed no mobile */
+  .lt-rumin-wrap { margin: 1.5rem -1.25rem 0; display: flex; justify-content: center; }
+  .lt-rumin-img { width: 100%; height: auto; display: block; border-radius: 0; }
+  @media (min-width: 768px) {
+    .lt-rumin-wrap { margin: 1.5rem 0 0; }
+    .lt-rumin-img { max-width: 480px; border-radius: 1rem; }
+  }
+
   /* CTABlock desktop layout */
   .lt-cta-inner { display: flex; flex-direction: column; gap: 1.5rem; }
   @media (min-width: 768px) {
@@ -209,25 +220,17 @@ export default function App() {
               <span style={{ color: 'var(--primary)' }}>Protocolo Espelho 30D:</span>
             </h2>
 
-            <div className="lt-social-grid" style={{ marginTop: '2rem', columns: 2, gap: '1rem' }}>
+            <div className="lt-social-grid" style={{ marginTop: '2rem', columns: 1, gap: '1rem', maxWidth: '28rem', marginLeft: 'auto', marginRight: 'auto' }}>
               {[
-                { label: 'Juliana, 34 anos', texto: 'Perdeu 4kg e firmou em 30 dias' },
-                { label: 'Patrícia, 38 anos', texto: 'Primeira vez que passou um fim de semana sem estragar o resultado' },
-                { label: 'Ana, 41 anos', texto: 'Voltou a usar a calça que estava guardada há 2 anos' },
-                { label: 'Renata, 33 anos', texto: 'Treinou em casa com bebê no colo e teve resultado' },
-                { label: 'Fernanda, 36 anos', texto: '"Finalmente um método que funciona com a minha vida"' },
-                { label: 'Carla, 40 anos', texto: 'Perdeu 5cm de cintura no primeiro mês' },
+                { src: '/assets/depoimento_real1.webp', label: 'Bárbara Natali' },
+                { src: '/assets/depoimento_real2.webp', label: 'Vanessa' },
               ].map((d, i) => (
                 <div key={i} className="lt-card" style={{ overflow: 'hidden', breakInside: 'avoid', marginBottom: '1rem' }}>
                   <img
-                    src={`/assets/depo-${i + 1}.png`}
+                    src={d.src}
                     alt={`Depoimento: ${d.label}`}
                     style={{ width: '100%', display: 'block' }}
                   />
-                  <div style={{ background: '#fff', padding: '1rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--fg)' }}>{d.label}</p>
-                    <p style={{ fontSize: '0.8125rem', color: 'var(--muted)' }}>{d.texto}</p>
-                  </div>
                 </div>
               ))}
             </div>
@@ -250,19 +253,13 @@ export default function App() {
               E toda vez que você se olha, vem isso na sua cabeça:
             </p>
 
-            {/* Vozes da Cabeça — literais do persona.md, focadas no espelho */}
-            <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {[
-                '"Não aguento mais me olhar no espelho e não me reconhecer."',
-                '"A roupa que eu usava no ano passado já não fecha mais."',
-                '"Toda segunda eu começo de novo. Parece que nunca sai do lugar."',
-                '"Já tentei tanta coisa que nem me animo mais."',
-                '"Antes eu era tão disciplinada, não sei o que aconteceu comigo."',
-              ].map((voz, i) => (
-                <div key={i} className="lt-quote">
-                  <p style={{ fontSize: '1rem', fontStyle: 'italic', color: 'var(--fg)', lineHeight: 1.6 }}>{voz}</p>
-                </div>
-              ))}
+            {/* Vozes da Cabeça */}
+            <div className="lt-rumin-wrap">
+              <img
+                src="/assets/ruminações.webp"
+                alt="Vozes na cabeça — ruminações da Camila"
+                className="lt-rumin-img"
+              />
             </div>
           </div>
         </section>
@@ -270,21 +267,48 @@ export default function App() {
         {/* ════════════════ 4. PONTE (DOR → SOLUÇÃO) ════════════════ */}
         <section className="lt-section">
           <div className="lt-orb" style={{ width: 500, height: 500, background: 'rgba(244,162,97,0.15)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
-          <div style={{ position: 'relative', zIndex: 10, maxWidth: '40rem', margin: '0 auto', padding: '0 1.25rem' }}>
+          <div style={{ position: 'relative', zIndex: 10, maxWidth: '44rem', margin: '0 auto', padding: '0 1.25rem' }}>
 
-            <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '1.25rem' }}>
-              Isso não é fraqueza. E não é falta de disciplina. Os programas foram feitos para condições ideais — sem filhos, sem trabalho, sem vida social. Quando a vida real aparece, o método não tem resposta. Você cai, sente culpa e volta à estaca zero.{' '}
-              <strong style={{ color: 'var(--fg)' }}>Não porque você é fraca. Porque o método errado não aguenta a sua vida.</strong>
-            </p>
-
-            <div style={{ height: 1, background: 'rgba(26,26,46,0.1)', margin: '1.5rem 0' }} />
-
-            <div style={{ borderRadius: '1.25rem', background: 'linear-gradient(135deg, #fff8f5, #fff5f0)', padding: '1.75rem', boxShadow: '0 8px 30px rgba(230,57,70,0.08)', border: '1.5px solid rgba(230,57,70,0.12)' }}>
-              <p style={{ fontSize: '1.0625rem', lineHeight: 1.75, color: 'var(--fg)', margin: 0 }}>
-                Se você pudesse seguir um protocolo de 30 dias, feito para a sua vida real, e desta vez{' '}
-                <strong>ver resultado no espelho</strong> — isso resolveria o seu problema? Se a resposta for{' '}
-                <strong style={{ color: 'var(--primary)' }}>"SIM"</strong>, o Protocolo Espelho 30D é pra você.
+            {/* DIAGNÓSTICO */}
+            <div style={{ position: 'relative', borderRadius: '1.25rem', background: 'white', padding: '1.75rem 1.75rem 1.75rem 2rem', boxShadow: '0 8px 30px rgba(26,26,46,0.06)', border: '1px solid var(--border)', borderLeft: '4px solid var(--primary)' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(230,57,70,0.08)', color: 'var(--primary)', padding: '0.375rem 0.875rem', borderRadius: 9999, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                <X size={14} strokeWidth={3} /> O diagnóstico
+              </div>
+              <p style={{ fontSize: '1.0625rem', lineHeight: 1.75, color: 'var(--muted)', margin: 0 }}>
+                Isso não é fraqueza. E não é falta de disciplina. Os programas foram feitos para condições ideais — sem filhos, sem trabalho, sem vida social. Quando a vida real aparece, o método não tem resposta. Você cai, sente culpa e volta à estaca zero.{' '}
+                <strong style={{ color: 'var(--fg)' }}>Não porque você é fraca. Porque o método errado não aguenta a sua vida.</strong>
               </p>
+            </div>
+
+            {/* CONECTOR VISUAL: linha em gradiente do vermelho ao verde + ícone */}
+            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0.5rem 0' }}>
+              <div style={{ width: 2, height: 56, background: 'linear-gradient(to bottom, var(--primary), var(--accent), var(--success))' }} />
+              <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 48, height: 48, borderRadius: '50%', background: 'white', border: '2px solid var(--success)', boxShadow: '0 6px 20px rgba(22,163,74,0.25)' }}>
+                <Zap size={22} strokeWidth={2.5} style={{ color: 'var(--success)' }} fill="currentColor" />
+              </div>
+              <div style={{ width: 2, height: 56, background: 'linear-gradient(to bottom, var(--success), rgba(22,163,74,0.2))' }} />
+            </div>
+
+            {/* PROMESSA */}
+            <div style={{ position: 'relative', borderRadius: '1.25rem', background: 'linear-gradient(135deg, #fff8f5 0%, #fff5f0 50%, #f0fdf4 100%)', padding: '2rem 1.75rem', boxShadow: '0 12px 40px rgba(230,57,70,0.1)', border: '1.5px solid rgba(230,57,70,0.15)', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: -40, right: -40, width: 160, height: 160, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,162,97,0.25), transparent 70%)' }} />
+              <div style={{ position: 'relative' }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(22,163,74,0.1)', color: 'var(--success)', padding: '0.375rem 0.875rem', borderRadius: 9999, fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                  <CheckCircle2 size={14} strokeWidth={3} /> E se desta vez fosse diferente?
+                </div>
+                <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'var(--fg)', margin: 0, fontWeight: 500 }}>
+                  Se você pudesse seguir um protocolo de 30 dias, feito para a sua vida real, e desta vez{' '}
+                  <span style={{ background: 'linear-gradient(180deg, transparent 60%, rgba(244,162,97,0.45) 60%)', fontWeight: 700 }}>ver resultado no espelho</span> — isso resolveria o seu problema?
+                </p>
+                <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.875rem', padding: '1rem 1.25rem', background: 'white', borderRadius: '0.875rem', border: '1px solid rgba(230,57,70,0.15)' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, borderRadius: '50%', background: 'var(--primary)', color: 'white', fontSize: '0.875rem', fontWeight: 800, letterSpacing: '0.05em', flexShrink: 0 }}>
+                    SIM
+                  </span>
+                  <p style={{ fontSize: '1rem', lineHeight: 1.55, color: 'var(--fg)', margin: 0 }}>
+                    Se a resposta for sim, o <strong>Protocolo Espelho 30D</strong> é pra você.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -305,25 +329,74 @@ export default function App() {
                   num: '01',
                   title: 'Acesse agora',
                   desc: 'Comprou? Em minutos você está dentro — celular, tablet ou computador. Sem espera.',
+                  bg: 'linear-gradient(135deg, #fef3ec 0%, #fde6d3 100%)',
+                  visual: (
+                    <div style={{ position: 'relative', width: 96, height: 96 }}>
+                      <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Smartphone size={72} strokeWidth={1.5} style={{ color: 'var(--fg)' }} />
+                      </div>
+                      <div style={{ position: 'absolute', top: -6, right: -6, width: 32, height: 32, borderRadius: '50%', background: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(22,163,74,0.4)' }}>
+                        <Check size={18} strokeWidth={3} style={{ color: 'white' }} />
+                      </div>
+                    </div>
+                  ),
                 },
                 {
                   num: '02',
                   title: 'Abra o treino do dia',
                   desc: '20 minutos, qualquer cantinho da casa, sem equipamento. O vídeo mostra tudo passo a passo.',
+                  bg: 'linear-gradient(135deg, #fef0ee 0%, #fcdcd8 100%)',
+                  visual: (
+                    <div style={{ position: 'relative', width: 120, height: 80, borderRadius: '0.625rem', background: 'var(--fg)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(26,26,46,0.2)' }}>
+                      <PlayCircle size={44} strokeWidth={1.75} style={{ color: 'white' }} fill="rgba(230,57,70,0.9)" />
+                      <div style={{ position: 'absolute', bottom: 8, left: 8, right: 8, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.25)', overflow: 'hidden' }}>
+                        <div style={{ width: '35%', height: '100%', background: 'var(--primary)' }} />
+                      </div>
+                      <div style={{ position: 'absolute', top: -10, right: -10, padding: '0.25rem 0.5rem', borderRadius: 6, background: 'white', fontSize: '0.6875rem', fontWeight: 700, color: 'var(--fg)', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>20 min</div>
+                    </div>
+                  ),
                 },
                 {
                   num: '03',
                   title: 'Use o guia no fim de semana',
                   desc: 'Antes do churrasco ou aniversário, abre o guia e aplica. Você curte sem culpa e sem destruir o resultado.',
+                  bg: 'linear-gradient(135deg, #fff5e6 0%, #ffe7c2 100%)',
+                  visual: (
+                    <div style={{ position: 'relative', width: 92, height: 96, borderRadius: '0.625rem', background: 'white', border: '1px solid var(--border)', overflow: 'hidden', boxShadow: '0 6px 18px rgba(26,26,46,0.08)' }}>
+                      <div style={{ height: 22, background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Calendar size={12} strokeWidth={2.5} style={{ color: 'white' }} />
+                      </div>
+                      <div style={{ padding: '0.375rem', display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 2 }}>
+                        {Array.from({ length: 21 }).map((_, i) => {
+                          const isWeekend = i % 7 === 5 || i % 7 === 6;
+                          return (
+                            <div key={i} style={{ aspectRatio: '1', borderRadius: 2, background: isWeekend ? 'var(--accent)' : 'rgba(26,26,46,0.06)' }} />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ),
                 },
                 {
                   num: '04',
                   title: 'Olhe no espelho',
                   desc: 'Em 30 dias, o espelho te diz o que a balança não sabe contar. Barriga mais firme, roupas fechando de novo.',
+                  bg: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
+                  visual: (
+                    <div style={{ position: 'relative', width: 72, height: 100 }}>
+                      <div style={{ position: 'absolute', inset: 0, borderRadius: '36px 36px 32px 32px', background: 'linear-gradient(160deg, #cfeef0 0%, #e8f7f2 60%, #ffffff 100%)', border: '4px solid var(--fg)', boxShadow: 'inset 0 0 20px rgba(255,255,255,0.6), 0 8px 24px rgba(26,26,46,0.15)' }} />
+                      <div style={{ position: 'absolute', top: 14, left: 14, width: 18, height: 32, borderRadius: '50%', background: 'rgba(255,255,255,0.6)', filter: 'blur(2px)' }} />
+                      <Sparkles size={20} strokeWidth={2} style={{ position: 'absolute', top: -6, right: -10, color: 'var(--accent)' }} fill="var(--accent)" />
+                      <Sparkles size={14} strokeWidth={2} style={{ position: 'absolute', bottom: 4, left: -10, color: 'var(--success)' }} fill="var(--success)" />
+                    </div>
+                  ),
                 },
               ].map(step => (
                 <div key={step.num} className="lt-card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-                  <div style={{ padding: '1.75rem 1.5rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', flex: 1 }}>
+                  <div style={{ height: 160, background: step.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', borderBottom: '1px solid var(--border)' }}>
+                    {step.visual}
+                  </div>
+                  <div style={{ padding: '1.5rem 1.5rem 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', flex: 1 }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: 9999, background: 'var(--primary)', padding: '0.375rem 1rem', fontSize: '0.875rem', fontWeight: 700, color: 'white', alignSelf: 'flex-start' }}>
                       {step.num}
                     </span>
