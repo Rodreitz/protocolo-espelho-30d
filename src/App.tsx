@@ -157,9 +157,11 @@ export default function App() {
 
         {/* ── LOGO / HEADER ── */}
         <header className="py-3 flex justify-center">
-          <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg)', letterSpacing: '-0.02em' }}>
-            Thiago Benvenho
-          </span>
+          <img
+            src="/assets/logo.webp"
+            alt="Protocolo Espelho 30D"
+            style={{ height: '5rem', width: 'auto', display: 'block' }}
+          />
         </header>
 
         {/* ════════════════ 1. HERO ════════════════ */}
@@ -174,8 +176,8 @@ export default function App() {
               {/* Texto */}
               <div className="flex-1">
                 <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--fg)', textWrap: 'balance' } as React.CSSProperties}>
-                  Pare de evitar o espelho:{' '}
-                  <span style={{ color: 'var(--primary)' }}>seque a barriga em 30 dias treinando 20 minutos por dia em casa.</span>
+                  Transforme o que você vê no espelho em 30 dias —{' '}
+                  <span style={{ color: 'var(--primary)' }}>sem precisar pagar academia.</span>
                 </h1>
                 <p style={{ marginTop: '1rem', fontSize: '1.0625rem', color: 'var(--muted)', lineHeight: 1.7 }}>
                   Com o Protocolo Espelho 30D você vai treinar em casa sem equipamento, ver resultado no espelho em 30 dias — e desta vez chegar até o fim, mesmo com filhos, trabalho e vida social no meio.
@@ -220,12 +222,12 @@ export default function App() {
               <span style={{ color: 'var(--primary)' }}>Protocolo Espelho 30D:</span>
             </h2>
 
-            <div className="lt-social-grid" style={{ marginTop: '2rem', columns: 1, gap: '1rem', maxWidth: '28rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(20rem, 1fr))', gap: '1.5rem', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
               {[
                 { src: '/assets/depoimento_real1.webp', label: 'Bárbara Natali' },
                 { src: '/assets/depoimento_real2.webp', label: 'Vanessa' },
               ].map((d, i) => (
-                <div key={i} className="lt-card" style={{ overflow: 'hidden', breakInside: 'avoid', marginBottom: '1rem' }}>
+                <div key={i} className="lt-card" style={{ overflow: 'hidden' }}>
                   <img
                     src={d.src}
                     alt={`Depoimento: ${d.label}`}
@@ -429,10 +431,10 @@ export default function App() {
                   img: '/assets/entregavel-1.png',
                 },
                 {
-                  title: 'Guia do Fim de Semana Sem Culpa',
-                  desc: 'O material que resolve o maior sabotador da mulher brasileira. Estratégias práticas e prontas para aplicar em churrasco, pizza, aniversário, barzinho — você curte tudo sem sentir culpa e sem destruir o resultado da semana.',
+                  title: 'Espelho Mental — Reprogramando Sua Autoimagem',
+                  desc: 'O PDF que trabalha a sua relação com o próprio corpo e com o espelho — âncora direta da voz que aparece toda vez que você se olha. Sem reprogramar essa imagem, a mudança física não sustenta. Aqui você quebra o ciclo de auto-sabotagem na raiz.',
                   tipo: 'pdf',
-                  img: '/assets/entregavel-2.png',
+                  img: '/assets/espelho-mental.png',
                 },
                 {
                   title: '10 Hábitos Que Aceleram Seus Resultados em 7 Dias',
@@ -479,25 +481,40 @@ export default function App() {
             </div>
 
             {/* Bônus */}
-            <div style={{ marginTop: '2rem' }}>
-              <div className="lt-card" style={{ overflow: 'hidden' }}>
-                <div className="lt-deliv-inner lt-rev" style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div className="lt-deliv-img" style={{ overflow: 'hidden', background: '#f0f0eb', minHeight: 160, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img
-                      src="/assets/bonus-1.png"
-                      alt="Mockup do bônus Planejamento Alimentar para Definição"
-                      style={{ width: '100%', height: 'auto', display: 'block' }}
-                    />
-                  </div>
-                  <div className="lt-deliv-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.75rem', padding: '1.5rem 2rem' }}>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, borderRadius: 9999, background: 'rgba(244,162,97,0.15)', padding: '0.25rem 0.875rem', fontSize: '0.75rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.08em', alignSelf: 'flex-start' }}>
-                      🎁 BÔNUS EXCLUSIVO
-                    </span>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--fg)' }}>Planejamento Alimentar para Definição</h3>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--muted)' }}>Cardápio base com sugestões de refeições práticas para a mulher que quer resultado sem dieta radical e sem passar fome. Vai direto ao que funciona — sem complicação.</p>
+            <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              {[
+                {
+                  img: '/assets/bonus-1.png',
+                  alt: 'Mockup do bônus Planejamento Alimentar para Definição',
+                  title: 'Planejamento Alimentar para Definição',
+                  desc: 'Cardápio base com sugestões de refeições práticas para a mulher que quer resultado sem dieta radical e sem passar fome. Vai direto ao que funciona — sem complicação.',
+                },
+                {
+                  img: '/assets/entregavel-2.png',
+                  alt: 'Mockup do bônus Guia do Fim de Semana Sem Culpa',
+                  title: 'Guia do Fim de Semana Sem Culpa',
+                  desc: 'O material que resolve o maior sabotador da mulher brasileira. Estratégias práticas e prontas para aplicar em churrasco, pizza, aniversário, barzinho — você curte tudo sem sentir culpa e sem destruir o resultado da semana.',
+                },
+              ].map((b, i) => (
+                <div key={i} className="lt-card" style={{ overflow: 'hidden' }}>
+                  <div className={`lt-deliv-inner${i % 2 === 0 ? ' lt-rev' : ''}`} style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div className="lt-deliv-img" style={{ overflow: 'hidden', background: '#f0f0eb', minHeight: 160, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <img
+                        src={b.img}
+                        alt={b.alt}
+                        style={{ width: '100%', height: 'auto', display: 'block' }}
+                      />
+                    </div>
+                    <div className="lt-deliv-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.75rem', padding: '1.5rem 2rem' }}>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, borderRadius: 9999, background: 'rgba(244,162,97,0.15)', padding: '0.25rem 0.875rem', fontSize: '0.75rem', fontWeight: 700, color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.08em', alignSelf: 'flex-start' }}>
+                        🎁 BÔNUS EXCLUSIVO
+                      </span>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--fg)' }}>{b.title}</h3>
+                      <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--muted)' }}>{b.desc}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -556,9 +573,10 @@ export default function App() {
             <div style={{ borderRadius: '1.5rem', background: 'white', boxShadow: '0 10px 40px rgba(26,26,46,0.06)', overflow: 'hidden' }}>
               {[
                 { nome: 'Plataforma de Treinos 30D', valor: 'R$ 127,00' },
-                { nome: 'Guia do Fim de Semana Sem Culpa', valor: 'R$ 97,00' },
+                { nome: 'Espelho Mental — Reprogramando Sua Autoimagem', valor: 'R$ 97,00' },
                 { nome: '10 Hábitos Que Aceleram Seus Resultados em 7 Dias', valor: 'R$ 67,00' },
                 { nome: 'BÔNUS: Planejamento Alimentar para Definição', valor: 'R$ 97,00' },
+                { nome: 'BÔNUS: Guia do Fim de Semana Sem Culpa', valor: 'R$ 97,00' },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.5rem', borderBottom: '1px solid rgba(26,26,46,0.05)' }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem', color: 'var(--fg)' }}>
@@ -571,7 +589,7 @@ export default function App() {
               <div style={{ background: 'rgba(26,26,46,0.02)', padding: '1.25rem 1.5rem' }}>
                 <div className="lt-pricing-total">
                   <span style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg)' }}>Tudo isso deveria custar:</span>
-                  <span style={{ fontSize: '1.5rem', fontWeight: 700, color: '#dc2626', textDecoration: 'line-through', whiteSpace: 'nowrap' }}>R$ 388,00</span>
+                  <span style={{ fontSize: '1.5rem', fontWeight: 700, color: '#dc2626', textDecoration: 'line-through', whiteSpace: 'nowrap' }}>R$ 485,00</span>
                 </div>
               </div>
             </div>
@@ -620,7 +638,7 @@ export default function App() {
                   icon: <CheckCircle2 style={{ height: 32, width: 32, color: 'var(--success)' }} />,
                   num: '3',
                   title: 'TUDO PRONTO!',
-                  desc: 'Abra o treino do Dia 1, leia o Guia do Fim de Semana e comece hoje mesmo — o espelho vai te agradecer em 30 dias.',
+                  desc: 'Abra o treino do Dia 1, leia o Espelho Mental e comece hoje mesmo — o espelho vai te agradecer em 30 dias.',
                 },
               ].map((step, i) => (
                 <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', padding: '2rem 1.5rem', borderRadius: '1.25rem', background: 'var(--bg)' }}>
