@@ -11,7 +11,6 @@ import {
   PlayCircle,
   CheckCircle2,
   Smartphone,
-  Calendar,
   Sparkles,
 } from 'lucide-react';
 
@@ -126,12 +125,17 @@ const styles = `
     box-shadow: 0 2px 12px rgba(26,26,46,0.04);
   }
 
+  .lt-hero-headline { text-align: center; }
+  @media (min-width: 768px) {
+    .lt-hero-headline { text-align: left; }
+  }
+
   /* Imagem ruminações: full-bleed no mobile */
   .lt-rumin-wrap { margin: 1.5rem -1.25rem 0; display: flex; justify-content: center; }
   .lt-rumin-img { width: 100%; height: auto; display: block; border-radius: 0; }
   @media (min-width: 768px) {
     .lt-rumin-wrap { margin: 1.5rem 0 0; }
-    .lt-rumin-img { max-width: 480px; border-radius: 1rem; }
+    .lt-rumin-img { max-width: 640px; border-radius: 1rem; }
   }
 
   /* CTABlock desktop layout */
@@ -141,6 +145,10 @@ const styles = `
     .lt-cta-mockup { width: 45%; flex-shrink: 0; }
     .lt-cta-info { flex: 1; }
   }
+
+  /* Testimonials: side-by-side on desktop, stack on mobile */
+  .responsive-grid { grid-template-columns: 1fr !important; }
+  @media (min-width: 768px) { .responsive-grid { grid-template-columns: repeat(3, 1fr) !important; } }
 `;
 
 /* ─── App ─── */
@@ -175,19 +183,19 @@ export default function App() {
 
               {/* Texto */}
               <div className="flex-1">
-                <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--fg)', textWrap: 'balance' } as React.CSSProperties}>
-                  Transforme o que você vê no espelho em 30 dias —{' '}
+                <h1 className="lt-hero-headline" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--fg)', textWrap: 'balance' } as React.CSSProperties}>
+                  Transforme o que você vê no espelho em 30 dias{' '}
                   <span style={{ color: 'var(--primary)' }}>sem precisar pagar academia.</span>
                 </h1>
                 <p style={{ marginTop: '1rem', fontSize: '1.0625rem', color: 'var(--muted)', lineHeight: 1.7 }}>
-                  Com o Protocolo Espelho 30D você vai treinar em casa sem equipamento, ver resultado no espelho em 30 dias — e desta vez chegar até o fim, mesmo com filhos, trabalho e vida social no meio.
+                  Com o Protocolo Espelho 30D você vai treinar em casa sem equipamento, ver resultado no espelho em 30 dias e desta vez chegar até o fim, mesmo com filhos, trabalho e vida social no meio.
                 </p>
 
                 {/* Bullets */}
                 <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {[
                     'Treinos de 20 min em casa, sem equipamento',
-                    'Resultado visível no espelho em 30 dias — ou devolvemos 100%',
+                    'Resultado visível no espelho em 30 dias, com garantia de 100%',
                     'Funciona com filhos, trabalho e vida social',
                   ].map((label, i) => (
                     <span key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9375rem', color: 'var(--fg)', lineHeight: 1.5 }}>
@@ -222,10 +230,11 @@ export default function App() {
               <span style={{ color: 'var(--primary)' }}>Protocolo Espelho 30D:</span>
             </h2>
 
-            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(20rem, 1fr))', gap: '1.5rem', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
+            <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto' }} className="responsive-grid">
               {[
                 { src: '/assets/depoimento_real1.webp', label: 'Bárbara Natali' },
                 { src: '/assets/depoimento_real2.webp', label: 'Vanessa' },
+                { src: '/assets/depoimento_real3.webp', label: 'Adriana' },
               ].map((d, i) => (
                 <div key={i} className="lt-card" style={{ overflow: 'hidden' }}>
                   <img
@@ -246,12 +255,12 @@ export default function App() {
           <div className="lt-orb" style={{ width: 600, height: 600, background: 'rgba(230,57,70,0.08)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
 
-            <p style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', fontWeight: 700, lineHeight: 1.3, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance' } as React.CSSProperties}>
+            <p style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, lineHeight: 1.25, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance' } as React.CSSProperties}>
               Eu sei que você{' '}
               <span style={{ color: 'var(--primary)' }}>não gosta do que vê quando olha no espelho.</span>
             </p>
 
-            <p style={{ marginTop: '1.25rem', fontSize: '1rem', fontWeight: 600, color: 'var(--fg)', textAlign: 'center' }}>
+            <p style={{ marginTop: '1.25rem', fontSize: '1.125rem', fontWeight: 600, color: 'var(--fg)', textAlign: 'center' }}>
               E toda vez que você se olha, vem isso na sua cabeça:
             </p>
 
@@ -277,7 +286,7 @@ export default function App() {
                 <X size={14} strokeWidth={3} /> O diagnóstico
               </div>
               <p style={{ fontSize: '1.0625rem', lineHeight: 1.75, color: 'var(--muted)', margin: 0 }}>
-                Isso não é fraqueza. E não é falta de disciplina. Os programas foram feitos para condições ideais — sem filhos, sem trabalho, sem vida social. Quando a vida real aparece, o método não tem resposta. Você cai, sente culpa e volta à estaca zero.{' '}
+                Isso não é fraqueza. E não é falta de disciplina. Os programas foram feitos para condições ideais: sem filhos, sem trabalho, sem vida social. Quando a vida real aparece, o método não tem resposta. Você cai, sente culpa e volta à estaca zero.{' '}
                 <strong style={{ color: 'var(--fg)' }}>Não porque você é fraca. Porque o método errado não aguenta a sua vida.</strong>
               </p>
             </div>
@@ -300,7 +309,7 @@ export default function App() {
                 </div>
                 <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'var(--fg)', margin: 0, fontWeight: 500 }}>
                   Se você pudesse seguir um protocolo de 30 dias, feito para a sua vida real, e desta vez{' '}
-                  <span style={{ background: 'linear-gradient(180deg, transparent 60%, rgba(244,162,97,0.45) 60%)', fontWeight: 700 }}>ver resultado no espelho</span> — isso resolveria o seu problema?
+                  <span style={{ background: 'linear-gradient(180deg, transparent 60%, rgba(244,162,97,0.45) 60%)', fontWeight: 700 }}>ver resultado no espelho</span>, isso resolveria o seu problema?
                 </p>
                 <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.875rem', padding: '1rem 1.25rem', background: 'white', borderRadius: '0.875rem', border: '1px solid rgba(230,57,70,0.15)' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, borderRadius: '50%', background: 'var(--primary)', color: 'white', fontSize: '0.875rem', fontWeight: 800, letterSpacing: '0.05em', flexShrink: 0 }}>
@@ -322,15 +331,15 @@ export default function App() {
           <div className="lt-orb" style={{ width: 400, height: 400, background: 'rgba(244,162,97,0.3)', top: -80, left: -80 }} />
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '72rem', margin: '0 auto', padding: '0 1.25rem' }}>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center', maxWidth: '48rem', margin: '0 auto', textWrap: 'balance' } as React.CSSProperties}>
-              Como o Protocolo Espelho 30D funciona:
+              Esses são os 3 passos para você transformar o que vê no espelho em 30 dias:
             </h2>
 
             <div style={{ marginTop: '3.5rem', display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
               {[
                 {
                   num: '01',
-                  title: 'Acesse agora',
-                  desc: 'Comprou? Em minutos você está dentro — celular, tablet ou computador. Sem espera.',
+                  title: 'Acesse e comece hoje',
+                  desc: 'Comprou? Em minutos você já está com tudo nas mãos. Abre no celular, lê o Espelho Mental e parte pro treino do Dia 1.',
                   bg: 'linear-gradient(135deg, #fef3ec 0%, #fde6d3 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 96, height: 96 }}>
@@ -345,8 +354,8 @@ export default function App() {
                 },
                 {
                   num: '02',
-                  title: 'Abra o treino do dia',
-                  desc: '20 minutos, qualquer cantinho da casa, sem equipamento. O vídeo mostra tudo passo a passo.',
+                  title: '20 minutos por dia, do seu jeito',
+                  desc: 'Qualquer cantinho da casa serve, sem equipamento. O vídeo mostra tudo, você segue no seu ritmo, na hora que couber na sua rotina.',
                   bg: 'linear-gradient(135deg, #fef0ee 0%, #fcdcd8 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 120, height: 80, borderRadius: '0.625rem', background: 'var(--fg)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(26,26,46,0.2)' }}>
@@ -360,29 +369,8 @@ export default function App() {
                 },
                 {
                   num: '03',
-                  title: 'Use o guia no fim de semana',
-                  desc: 'Antes do churrasco ou aniversário, abre o guia e aplica. Você curte sem culpa e sem destruir o resultado.',
-                  bg: 'linear-gradient(135deg, #fff5e6 0%, #ffe7c2 100%)',
-                  visual: (
-                    <div style={{ position: 'relative', width: 92, height: 96, borderRadius: '0.625rem', background: 'white', border: '1px solid var(--border)', overflow: 'hidden', boxShadow: '0 6px 18px rgba(26,26,46,0.08)' }}>
-                      <div style={{ height: 22, background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Calendar size={12} strokeWidth={2.5} style={{ color: 'white' }} />
-                      </div>
-                      <div style={{ padding: '0.375rem', display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 2 }}>
-                        {Array.from({ length: 21 }).map((_, i) => {
-                          const isWeekend = i % 7 === 5 || i % 7 === 6;
-                          return (
-                            <div key={i} style={{ aspectRatio: '1', borderRadius: 2, background: isWeekend ? 'var(--accent)' : 'rgba(26,26,46,0.06)' }} />
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ),
-                },
-                {
-                  num: '04',
-                  title: 'Olhe no espelho',
-                  desc: 'Em 30 dias, o espelho te diz o que a balança não sabe contar. Barriga mais firme, roupas fechando de novo.',
+                  title: 'Em 30 dias, olhe no espelho',
+                  desc: 'Barriga mais firme, roupas fechando de novo, postura diferente. O resultado que você queria há tempos começa a aparecer.',
                   bg: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 72, height: 100 }}>
@@ -426,19 +414,19 @@ export default function App() {
               {[
                 {
                   title: 'Plataforma de Treinos 30D',
-                  desc: 'Acesso completo à plataforma com planejamento de treinos para todos os dias — 7 treinos diferentes, um para cada dia da semana, de 20 a 30 minutos. Cada exercício tem vídeo demonstrativo de como realizar. Sem equipamento, funciona em qualquer canto da casa.',
+                  desc: 'Acesso completo à plataforma com planejamento de treinos para todos os dias: 7 treinos diferentes, um para cada dia da semana, de 20 a 30 minutos. Cada exercício tem vídeo demonstrativo de como realizar. Sem equipamento, funciona em qualquer canto da casa.',
                   tipo: 'plataforma',
                   img: '/assets/entregavel-1.png',
                 },
                 {
                   title: 'Espelho Mental — Reprogramando Sua Autoimagem',
-                  desc: 'O PDF que trabalha a sua relação com o próprio corpo e com o espelho — âncora direta da voz que aparece toda vez que você se olha. Sem reprogramar essa imagem, a mudança física não sustenta. Aqui você quebra o ciclo de auto-sabotagem na raiz.',
+                  desc: 'O PDF que trabalha a sua relação com o próprio corpo e com o espelho, a âncora direta da voz que aparece toda vez que você se olha. Sem reprogramar essa imagem, a mudança física não sustenta. Aqui você quebra o ciclo de auto-sabotagem na raiz.',
                   tipo: 'pdf',
                   img: '/assets/espelho-mental.png',
                 },
                 {
                   title: '10 Hábitos Que Aceleram Seus Resultados em 7 Dias',
-                  desc: 'Hábitos simples que aceleram o metabolismo e a queima de gordura. Você começa hoje e já sente diferença na barriga na primeira semana — sem dieta radical, sem sacrifício.',
+                  desc: 'Hábitos simples que aceleram o metabolismo e a queima de gordura. Você começa hoje e já sente diferença na barriga na primeira semana, sem dieta radical, sem sacrifício.',
                   tipo: 'pdf',
                   img: '/assets/entregavel-3.png',
                 },
@@ -487,13 +475,13 @@ export default function App() {
                   img: '/assets/bonus-1.png',
                   alt: 'Mockup do bônus Planejamento Alimentar para Definição',
                   title: 'Planejamento Alimentar para Definição',
-                  desc: 'Cardápio base com sugestões de refeições práticas para a mulher que quer resultado sem dieta radical e sem passar fome. Vai direto ao que funciona — sem complicação.',
+                  desc: 'Cardápio base com sugestões de refeições práticas para a mulher que quer resultado sem dieta radical e sem passar fome. Vai direto ao que funciona, sem complicação.',
                 },
                 {
                   img: '/assets/entregavel-2.png',
                   alt: 'Mockup do bônus Guia do Fim de Semana Sem Culpa',
                   title: 'Guia do Fim de Semana Sem Culpa',
-                  desc: 'O material que resolve o maior sabotador da mulher brasileira. Estratégias práticas e prontas para aplicar em churrasco, pizza, aniversário, barzinho — você curte tudo sem sentir culpa e sem destruir o resultado da semana.',
+                  desc: 'O material que resolve o maior sabotador da mulher brasileira. Estratégias práticas e prontas para aplicar em churrasco, pizza, aniversário, barzinho, e você curte tudo sem sentir culpa e sem destruir o resultado da semana.',
                 },
               ].map((b, i) => (
                 <div key={i} className="lt-card" style={{ overflow: 'hidden' }}>
@@ -533,7 +521,7 @@ export default function App() {
                 'Quer um treino em casa, de 20 a 30 minutos, sem precisar de nenhum equipamento',
                 'Está com a barriga inchada e quer firmar o corpo de forma progressiva',
                 'Quer poder curtir churrasco, pizza e aniversário sem destruir o resultado',
-                'Já começou mais de uma vez — e desta vez quer chegar até o fim de verdade',
+                'Já começou mais de uma vez e desta vez quer chegar até o fim de verdade',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderRadius: '1rem', background: 'white', padding: '1rem 1.5rem', textAlign: 'left', boxShadow: '0 4px 20px rgba(26,26,46,0.04)' }}>
                   <div style={{ display: 'flex', height: 32, width: 32, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: '50%', background: 'rgba(22,163,74,0.1)' }}>
@@ -549,7 +537,7 @@ export default function App() {
                   <X style={{ height: 16, width: 16, color: 'var(--primary)' }} />
                 </div>
                 <span style={{ fontSize: '1rem', color: 'var(--muted)' }}>
-                  <strong style={{ color: 'var(--primary)' }}>Isso NÃO é pra você</strong> se você quer emagrecer 15kg sem mudar absolutamente nada — aqui você vai agir, mas com inteligência e sem sofrimento desnecessário.
+                  <strong style={{ color: 'var(--primary)' }}>Isso NÃO é pra você</strong> se você quer emagrecer 15kg sem mudar absolutamente nada. Aqui você vai agir, mas com inteligência e sem sofrimento desnecessário.
                 </span>
               </div>
             </div>
@@ -626,19 +614,19 @@ export default function App() {
                   icon: <Mail style={{ height: 32, width: 32, color: 'var(--success)' }} />,
                   num: '1',
                   title: 'ACESSE SEU E-MAIL',
-                  desc: 'Em poucos minutos você recebe seu acesso na caixa de entrada. Sem espera.',
+                  desc: 'Você receberá um e-mail com o acesso ao Protocolo Espelho 30D. Basta clicar no email e acessar na hora.',
                 },
                 {
                   icon: <PlayCircle style={{ height: 32, width: 32, color: 'var(--success)' }} />,
                   num: '2',
                   title: 'ACESSE O PRODUTO',
-                  desc: 'Você recebe todos os materiais do Protocolo Espelho 30D imediatamente, para usar quando e onde quiser.',
+                  desc: 'Você tem acesso a todos os materiais do Protocolo Espelho 30D imediatamente, para usar quando e onde quiser.',
                 },
                 {
                   icon: <CheckCircle2 style={{ height: 32, width: 32, color: 'var(--success)' }} />,
                   num: '3',
                   title: 'TUDO PRONTO!',
-                  desc: 'Abra o treino do Dia 1, leia o Espelho Mental e comece hoje mesmo — o espelho vai te agradecer em 30 dias.',
+                  desc: 'Agora é só aplicar e começar a ver resultado no espelho.',
                 },
               ].map((step, i) => (
                 <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', padding: '2rem 1.5rem', borderRadius: '1.25rem', background: 'var(--bg)' }}>
@@ -665,7 +653,7 @@ export default function App() {
               Você tem duas escolhas agora.
             </h2>
             <p style={{ marginTop: '1rem', fontSize: '1.125rem', color: 'var(--muted)', lineHeight: 1.7 }}>
-              Só existem dois caminhos daqui pra frente — e você já sabe qual é cada um deles.
+              Só existem dois caminhos daqui pra frente, e você já sabe qual é cada um deles.
             </p>
 
             <div style={{ marginTop: '2rem', display: 'inline-block', borderRadius: '1.5rem', background: 'white', padding: '1.75rem 2rem', boxShadow: '0 10px 40px rgba(26,26,46,0.06)', textAlign: 'left', maxWidth: '36rem', width: '100%' }}>
@@ -674,7 +662,7 @@ export default function App() {
                   <X style={{ height: 20, width: 20, flexShrink: 0, marginTop: 2, color: 'var(--primary)' }} />
                   <div>
                     <p style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--primary)', marginBottom: '0.375rem' }}>Opção 1</p>
-                    <span style={{ fontSize: '1rem', color: 'var(--fg)', lineHeight: 1.6 }}>Fechar essa página, voltar para a rotina, e na próxima segunda se olhar no espelho — mais uma vez sem gostar do que vê. Sem saber o que vai ser diferente desta vez.</span>
+                    <span style={{ fontSize: '1rem', color: 'var(--fg)', lineHeight: 1.6 }}>Fechar essa página, voltar para a rotina, e na próxima segunda se olhar no espelho mais uma vez sem gostar do que vê. Sem saber o que vai ser diferente desta vez.</span>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.875rem', padding: '1rem 1.25rem', borderRadius: '1rem', background: 'rgba(22,163,74,0.04)', border: '1px solid rgba(22,163,74,0.15)' }}>
@@ -690,9 +678,8 @@ export default function App() {
             <div style={{ height: 1, width: 96, margin: '2rem auto', background: 'linear-gradient(to right, transparent, rgba(26,26,46,0.15), transparent)' }} />
 
             <p style={{ fontSize: '1.125rem', color: 'var(--fg)', maxWidth: '36rem', margin: '0 auto', lineHeight: 1.7 }}>
-              Eu sei que você já tentou antes. Eu sei que é difícil acreditar que desta vez vai ser diferente. É por isso que existe a garantia de 7 dias — se não funcionar para você, devolvemos 100% sem perguntas. Mas eu preciso que você tome uma decisão <strong>hoje.</strong>
+              Eu sei que você já tentou antes. Eu sei que é difícil acreditar que desta vez vai ser diferente. É por isso que existe a garantia de 7 dias: se não funcionar para você, devolvemos 100% sem perguntas. Mas eu preciso que você tome uma decisão <strong>hoje.</strong>
             </p>
-            <p style={{ marginTop: '1rem', fontWeight: 600, color: 'var(--fg)' }}>— Thiago Benvenho</p>
           </div>
         </section>
 
@@ -701,23 +688,24 @@ export default function App() {
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '56rem', margin: '0 auto', padding: '0 1.25rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2.5rem' }}>
             <div style={{ height: 280, width: 280, flexShrink: 0, overflow: 'hidden', borderRadius: '1.5rem', boxShadow: '0 10px 40px rgba(26,26,46,0.08)', background: 'linear-gradient(135deg, #1a1a2e, #e63946)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img
-                src="/assets/thiago.png"
+                src="/assets/foto_thiago.webp"
                 alt="Foto de Thiago Benvenho"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', textAlign: 'center' }}>
               <h2 style={{ fontSize: 'clamp(1.875rem, 3vw, 2.25rem)', fontWeight: 700, color: 'var(--fg)' }}>
-                Quem é <span style={{ color: 'var(--primary)' }}>Thiago Benvenho</span>?
+                O criador do Protocolo Espelho 30D é{' '}
+                <span style={{ color: 'var(--primary)' }}>Thiago Benvenho.</span>
               </h2>
               <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'var(--muted)' }}>
-                Thiago Benvenho é personal trainer especializado em transformação corporal para mulheres com vida corrida. Criou o método Espelho depois de acompanhar centenas de mulheres que sabiam exatamente o que precisavam fazer — mas paravam toda vez que a vida real aparecia: o fim de semana, a semana difícil, o mês corrido.
+                Educador Físico e Coach com atuação desde <strong style={{ color: 'var(--fg)' }}>1997</strong>, Thiago viu de perto o que mais sabota quem quer resultado: não é falta de vontade. É falta de um método que aguenta a vida real.
               </p>
               <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'var(--muted)' }}>
-                Com mais de 200 alunas atendidas, desenvolveu um protocolo de 30 dias feito para a realidade da mulher brasileira — que tem filhos, trabalho, vida social e não pode abrir mão de nada disso para ter resultado. Resultado que aparece no espelho. Não só na balança.
+                Depois de desenvolver sua abordagem de <strong style={{ color: 'var(--fg)' }}>leitura de padrões comportamentais</strong>, os resultados vieram: <strong style={{ color: 'var(--fg)' }}>+30 avaliações 5 estrelas</strong>, <strong style={{ color: 'var(--fg)' }}>100% de sucesso</strong> nos clientes que seguiram o protocolo e um maior case de <strong style={{ color: 'var(--fg)' }}>60 kg eliminados</strong>.
               </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--muted)' }}>
-                <em>"Minha missão é simples: mostrar para cada mulher que ela não precisa ser perfeita para ter um corpo de que se orgulha. Ela precisa do método certo."</em>
+              <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'var(--muted)' }}>
+                Agora ele coloca esse mesmo sistema dentro do Protocolo Espelho 30D, para você aplicar em casa, no seu ritmo.
               </p>
               <p style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--fg)' }}>
                 — Thiago Benvenho | Instagram: <span style={{ color: 'var(--primary)' }}>@thiagobenvenho</span>
@@ -749,11 +737,11 @@ export default function App() {
               />
               <FAQItem
                 q="Funciona no celular?"
-                a="Sim. A plataforma de treinos e todos os materiais funcionam em qualquer dispositivo — celular, tablet ou computador. Basta abrir o navegador e acessar. Sem instalar nenhum aplicativo."
+                a="Sim. A plataforma de treinos e todos os materiais funcionam em qualquer dispositivo: celular, tablet ou computador. Basta abrir o navegador e acessar. Sem instalar nenhum aplicativo."
               />
               <FAQItem
                 q="Preciso de algum equipamento para os treinos?"
-                a="Não. A Plataforma de Treinos 30D usa apenas o peso do seu próprio corpo. Você precisa de um cantinho qualquer — sala, quarto, varanda, hotel, onde estiver. Isso é tudo."
+                a="Não. A Plataforma de Treinos 30D usa apenas o peso do seu próprio corpo. Você precisa de um cantinho qualquer: sala, quarto, varanda, hotel, onde estiver. Isso é tudo."
               />
               <FAQItem
                 q="Funciona para quem está começando do zero?"
@@ -769,7 +757,7 @@ export default function App() {
               />
               <FAQItem
                 q="E se eu não gostar?"
-                a="Você tem 7 dias de garantia total e incondicional. Se por qualquer motivo o Protocolo não for pra você, basta enviar um e-mail e devolvemos 100% do valor — sem burocracia, sem perguntas, sem enrolação."
+                a="Você tem 7 dias de garantia total e incondicional. Se por qualquer motivo o Protocolo não for pra você, basta enviar um e-mail e devolvemos 100% do valor, sem burocracia, sem perguntas, sem enrolação."
               />
               <FAQItem
                 q="Quanto tempo leva para ver resultado?"
@@ -786,12 +774,10 @@ export default function App() {
             <p style={{ fontSize: '1.25rem', fontWeight: 600 }}>Protocolo Espelho 30D</p>
             <p style={{ fontSize: '0.875rem', opacity: 0.6 }}>
               Thiago Benvenho — Personal Trainer | Florianópolis, SC<br />
-              CNPJ: [CNPJ DO PRODUTOR]
+              CNPJ: 61.654.585/0001-58
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '1rem', fontSize: '0.875rem', opacity: 0.6 }}>
               <a href="mailto:contato@thiagobenvenho.com.br" style={{ color: 'inherit', textDecoration: 'none' }}>contato@thiagobenvenho.com.br</a>
-              <span>·</span>
-              <span>WhatsApp: (48) 9 8441-0109</span>
               <span>·</span>
               <a href="/politica" style={{ color: 'inherit', textDecoration: 'none' }}>Política de Privacidade</a>
               <span>·</span>
@@ -835,19 +821,17 @@ function CTABlock({ checkoutUrl }: { checkoutUrl: string }) {
         <div className="lt-cta-info" style={{ textAlign: 'center' }}>
           {/* Preço */}
           <p style={{ fontSize: '1.125rem', color: 'var(--muted)', textDecoration: 'line-through' }}>
-            De R$ 388,00
+            De R$ 485,00
           </p>
           <p style={{ marginTop: '0.375rem', fontSize: '0.875rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
             Por apenas
           </p>
           <p style={{ marginTop: '0.25rem', fontSize: 'clamp(2.25rem, 7vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1, color: 'var(--success)', whiteSpace: 'nowrap' }}>
-            3x de R$ 24,53
+            9x de R$ 8,00
           </p>
           <p style={{ marginTop: '0.5rem', fontSize: '1.125rem', color: 'var(--fg)' }}>
             ou <strong>R$ 67 à vista</strong>
           </p>
-          <p style={{ marginTop: '0.25rem', fontSize: '0.875rem', color: 'var(--muted)' }}>Acesso vitalício</p>
-
           {/* Botão com pulse ring */}
           <div style={{ position: 'relative', marginTop: '1.75rem', display: 'flex', justifyContent: 'center' }}>
             <div style={{ position: 'absolute', inset: 0, borderRadius: 9999, background: 'rgba(22,163,74,0.2)', animation: 'lt-pulse-ring 2s ease-in-out infinite' }} />
@@ -856,7 +840,7 @@ function CTABlock({ checkoutUrl }: { checkoutUrl: string }) {
               className="lt-btn-cta"
               style={{ position: 'relative' }}
             >
-              SIM, QUERO MEU ACESSO AGORA — R$ 67
+              Clique aqui para ter acesso
             </a>
           </div>
 
