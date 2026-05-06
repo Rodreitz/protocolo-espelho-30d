@@ -149,6 +149,10 @@ const styles = `
   /* Testimonials: side-by-side on desktop, stack on mobile */
   .responsive-grid { grid-template-columns: 1fr !important; }
   @media (min-width: 768px) { .responsive-grid { grid-template-columns: repeat(3, 1fr) !important; } }
+
+  /* Next steps: stacked on mobile, side-by-side on desktop */
+  .steps-grid { grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .steps-grid { grid-template-columns: repeat(3, 1fr); } }
 `;
 
 /* ─── App ─── */
@@ -185,7 +189,7 @@ export default function App() {
               <div className="flex-1">
                 <h1 className="lt-hero-headline" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--fg)', textWrap: 'balance' } as React.CSSProperties}>
                   Transforme o que você vê no espelho em 30 dias{' '}
-                  <span style={{ color: 'var(--primary)' }}>sem precisar pagar academia.</span>
+                  <span style={{ color: 'var(--primary)' }}>sem sair de casa, sem equipamento, e sem abrir mão da sua rotina.</span>
                 </h1>
                 <p style={{ marginTop: '1rem', fontSize: '1.0625rem', color: 'var(--muted)', lineHeight: 1.7 }}>
                   Com o Protocolo Espelho 30D você vai treinar em casa sem equipamento, ver resultado no espelho em 30 dias e desta vez chegar até o fim, mesmo com filhos, trabalho e vida social no meio.
@@ -194,8 +198,8 @@ export default function App() {
                 {/* Bullets */}
                 <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {[
-                    'Treinos de 20 min em casa, sem equipamento',
-                    'Resultado visível no espelho em 30 dias, com garantia de 100%',
+                    'Treinos de 30 min em casa, sem equipamento',
+                    'Resultado visível no espelho em 30 dias',
                     'Funciona com filhos, trabalho e vida social',
                   ].map((label, i) => (
                     <span key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9375rem', color: 'var(--fg)', lineHeight: 1.5 }}>
@@ -256,7 +260,7 @@ export default function App() {
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
 
             <p style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, lineHeight: 1.25, color: 'var(--fg)', textAlign: 'center', textWrap: 'balance' } as React.CSSProperties}>
-              Eu sei que você{' '}
+              Eu sei... você{' '}
               <span style={{ color: 'var(--primary)' }}>não gosta do que vê quando olha no espelho.</span>
             </p>
 
@@ -286,7 +290,7 @@ export default function App() {
                 <X size={14} strokeWidth={3} /> O diagnóstico
               </div>
               <p style={{ fontSize: '1.0625rem', lineHeight: 1.75, color: 'var(--muted)', margin: 0 }}>
-                Isso não é fraqueza. E não é falta de disciplina. Os programas foram feitos para condições ideais: sem filhos, sem trabalho, sem vida social. Quando a vida real aparece, o método não tem resposta. Você cai, sente culpa e volta à estaca zero.{' '}
+                Isso não é fraqueza. E não é falta de disciplina. Os programas de emagrecimento foram feitos para condições ideais: sem filhos, sem trabalho, sem vida social. Quando a vida real aparece, o método não acompanha. Você falha, sente culpa e volta à estaca zero.{' '}
                 <strong style={{ color: 'var(--fg)' }}>Não porque você é fraca. Porque o método errado não aguenta a sua vida.</strong>
               </p>
             </div>
@@ -331,15 +335,15 @@ export default function App() {
           <div className="lt-orb" style={{ width: 400, height: 400, background: 'rgba(244,162,97,0.3)', top: -80, left: -80 }} />
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '72rem', margin: '0 auto', padding: '0 1.25rem' }}>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.2, color: 'var(--fg)', textAlign: 'center', maxWidth: '48rem', margin: '0 auto', textWrap: 'balance' } as React.CSSProperties}>
-              Esses são os 3 passos para você transformar o que vê no espelho em 30 dias:
+              Esses são os 4 passos para você transformar o que vê no espelho em 30 dias:
             </h2>
 
             <div style={{ marginTop: '3.5rem', display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
               {[
                 {
                   num: '01',
-                  title: 'Acesse e comece hoje',
-                  desc: 'Comprou? Em minutos você já está com tudo nas mãos. Abre no celular, lê o Espelho Mental e parte pro treino do Dia 1.',
+                  title: 'Acesse a plataforma de treinos',
+                  desc: 'Receba acesso imediato à plataforma com todos os treinos planejados para você obter resultados em 30 dias.',
                   bg: 'linear-gradient(135deg, #fef3ec 0%, #fde6d3 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 96, height: 96 }}>
@@ -354,8 +358,8 @@ export default function App() {
                 },
                 {
                   num: '02',
-                  title: '20 minutos por dia, do seu jeito',
-                  desc: 'Qualquer cantinho da casa serve, sem equipamento. O vídeo mostra tudo, você segue no seu ritmo, na hora que couber na sua rotina.',
+                  title: 'Siga a sequência de treinos diários',
+                  desc: 'Você só precisa de 30 minutos por dia. Exercite-se em qualquer cantinho da casa, sem equipamento. O vídeo mostra tudo, você segue no seu ritmo, na hora que couber na sua rotina.',
                   bg: 'linear-gradient(135deg, #fef0ee 0%, #fcdcd8 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 120, height: 80, borderRadius: '0.625rem', background: 'var(--fg)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(26,26,46,0.2)' }}>
@@ -369,8 +373,21 @@ export default function App() {
                 },
                 {
                   num: '03',
+                  title: 'Reprograme sua mente',
+                  desc: 'Siga o método para reprogramar sua autoimagem e criar hábitos que vão acelerar seus resultados — e manter o que você conquistou.',
+                  bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+                  visual: (
+                    <div style={{ position: 'relative', width: 96, height: 96, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'linear-gradient(135deg, #1a1a2e 0%, #e63946 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 24px rgba(26,26,46,0.2)' }}>
+                        <Sparkles size={36} strokeWidth={1.75} style={{ color: 'white' }} />
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  num: '04',
                   title: 'Em 30 dias, olhe no espelho',
-                  desc: 'Barriga mais firme, roupas fechando de novo, postura diferente. O resultado que você queria há tempos começa a aparecer.',
+                  desc: 'Barriga mais firme, roupas fechando de novo, postura diferente. O resultado que você queria há tempos finalmente aparece.',
                   bg: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 72, height: 100 }}>
@@ -420,7 +437,7 @@ export default function App() {
                 },
                 {
                   title: 'Espelho Mental — Reprogramando Sua Autoimagem',
-                  desc: 'O PDF que trabalha a sua relação com o próprio corpo e com o espelho, a âncora direta da voz que aparece toda vez que você se olha. Sem reprogramar essa imagem, a mudança física não sustenta. Aqui você quebra o ciclo de auto-sabotagem na raiz.',
+                  desc: 'Trabalhe a sua relação com o próprio corpo e com o espelho, e controle a voz que aparece toda vez que você se olha. Sem reprogramar essa imagem, a mudança física não sustenta. Aqui você quebra o ciclo de auto-sabotagem na raiz.',
                   tipo: 'pdf',
                   img: '/assets/espelho-mental.png',
                 },
@@ -550,6 +567,20 @@ export default function App() {
           </div>
         </section>
 
+        {/* ── Avatar transformado ── */}
+        <section style={{ padding: '0 0 2.5rem' }}>
+          <div style={{ maxWidth: '32rem', margin: '0 auto', padding: '0 1.25rem', textAlign: 'center' }}>
+            <img
+              src="/assets/avatar-transformado.png"
+              alt="Mulher confiante se olhando no espelho após 30 dias de protocolo"
+              style={{ width: '100%', borderRadius: '1.5rem', boxShadow: '0 18px 45px rgba(26,26,46,0.12)', display: 'block' }}
+            />
+            <p style={{ marginTop: '1.25rem', fontSize: '1.0625rem', color: 'var(--muted)', fontStyle: 'italic' }}>
+              É assim que você vai se sentir em 30 dias.
+            </p>
+          </div>
+        </section>
+
         {/* ════════════════ 8. ANCORAGEM DE PREÇO ════════════════ */}
         {/* ⚠️ Sem botão de compra neste bloco */}
         <section className="lt-section">
@@ -608,7 +639,7 @@ export default function App() {
               Compre agora e receba seu acesso no e-mail imediatamente!
             </h2>
 
-            <div style={{ marginTop: '3rem', display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
+            <div style={{ marginTop: '3rem', display: 'grid', gap: '2rem', gridTemplateColumns: '1fr' }} className="steps-grid">
               {[
                 {
                   icon: <Mail style={{ height: 32, width: 32, color: 'var(--success)' }} />,
@@ -754,6 +785,10 @@ export default function App() {
               <FAQItem
                 q="Em quanto tempo vou receber o acesso?"
                 a="O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com o link em menos de 2 minutos. No Pix e cartão, a confirmação é instantânea."
+              />
+              <FAQItem
+                q="Por quanto tempo tenho acesso ao conteúdo?"
+                a="Os materiais em PDF (Protocolo de Treinos, Espelho Mental e Guia de Fim de Semana) são seus para sempre — acesso vitalício, você baixa e guarda onde quiser. O acesso à plataforma de treinos com os vídeos é de 1 ano a partir da data de compra, tempo mais do que suficiente para completar vários ciclos do protocolo."
               />
               <FAQItem
                 q="E se eu não gostar?"
