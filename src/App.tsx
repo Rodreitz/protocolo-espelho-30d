@@ -188,8 +188,8 @@ export default function App() {
               {/* Texto */}
               <div className="flex-1">
                 <h1 className="lt-hero-headline" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--fg)', textWrap: 'balance' } as React.CSSProperties}>
-                  Transforme o que você vê no espelho em 30 dias{' '}
-                  <span style={{ color: 'var(--primary)' }}>sem sair de casa, sem equipamento, e sem abrir mão da sua rotina.</span>
+                  Recupere sua autoestima e a vontade de se olhar no espelho em 30 dias,{' '}
+                  <span style={{ color: 'var(--primary)' }}>treinando apenas 30 minutos em casa.</span>
                 </h1>
                 <p style={{ marginTop: '1rem', fontSize: '1.0625rem', color: 'var(--muted)', lineHeight: 1.7 }}>
                   Com o Protocolo Espelho 30D você vai treinar em casa sem equipamento, ver resultado no espelho em 30 dias e desta vez chegar até o fim, mesmo com filhos, trabalho e vida social no meio.
@@ -235,6 +235,19 @@ export default function App() {
             </h2>
 
             <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: '100%', marginLeft: 'auto', marginRight: 'auto' }} className="responsive-grid">
+              {/*
+                depoimento_real1.webp — Bárbara Natali
+                Print de conversa no WhatsApp. Mensagem: "Oi Thiago, tudo bem? Olha a diferença do meu corpo depois de começar uma jornada com você! Resultado inacreditável 😊 Obrigado." (14:11)
+                Foto antes/depois: antes de blusa branca de renda e calça jeans; depois de top verde e shorts preto, corpo visivelmente mais definido.
+
+                depoimento_real2.webp — Vanessa
+                Print de conversa no WhatsApp. Mensagem: "Eu só tenho a agradecer ao Thiago pelo método incrível! Em apenas 60 dias consegui emagrecer 15 kg, algo que eu nunca imaginei ser possível em tão pouco tempo. Além da perda de peso, me sinto muito mais disposta, confiante e com a autoestima lá em cima. O método realmente funciona — só gratidão por essa transformação!" (14:16)
+                Foto antes/depois (Fevereiro/2026): antes de vestido vermelho; depois participando de corrida de rua (Femme Run) com número 692, corpo notavelmente mais magro.
+
+                depoimento_real3.webp — Adriana
+                Print de conversa no WhatsApp. Mensagem: "Estou muito feliz com os resultados que venho tendo — minha saúde e qualidade de vida melhoraram muito. E essa mudança só foi possível pela competência, dedicação e atenção do Prof Thiago, que me ajudou nesse processo de evolução. Seguimos juntos por mais um mês de parceria, evoluindo cada vez mais!" (19:49)
+                Foto antes/depois com legenda "ANTES / DEPOIS": antes de jaqueta preta em jardim; depois de blusa branca e saia estampada, sorrindo e com corpo transformado.
+              */}
               {[
                 { src: '/assets/depoimento_real1.webp', label: 'Bárbara Natali' },
                 { src: '/assets/depoimento_real2.webp', label: 'Vanessa' },
@@ -342,8 +355,8 @@ export default function App() {
               {[
                 {
                   num: '01',
-                  title: 'Acesse a plataforma de treinos',
-                  desc: 'Receba acesso imediato à plataforma com todos os treinos planejados para você obter resultados em 30 dias.',
+                  title: 'Acesse os treinos em vídeo pelo celular',
+                  desc: 'Abra pelo celular, tablet ou computador. Os treinos em vídeo ficam disponíveis para você assistir quando e onde quiser.',
                   bg: 'linear-gradient(135deg, #fef3ec 0%, #fde6d3 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 96, height: 96 }}>
@@ -358,8 +371,8 @@ export default function App() {
                 },
                 {
                   num: '02',
-                  title: 'Siga a sequência de treinos diários',
-                  desc: 'Você só precisa de 30 minutos por dia. Exercite-se em qualquer cantinho da casa, sem equipamento. O vídeo mostra tudo, você segue no seu ritmo, na hora que couber na sua rotina.',
+                  title: 'Siga os vídeos no seu ritmo, pelo celular',
+                  desc: 'São 30 minutos por dia, com o professor te guiando em vídeo em cada movimento. É só dar play no celular, colocar no chão da sala e treinar. Sem equipamento, sem academia.',
                   bg: 'linear-gradient(135deg, #fef0ee 0%, #fcdcd8 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 120, height: 80, borderRadius: '0.625rem', background: 'var(--fg)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(26,26,46,0.2)' }}>
@@ -367,14 +380,14 @@ export default function App() {
                       <div style={{ position: 'absolute', bottom: 8, left: 8, right: 8, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.25)', overflow: 'hidden' }}>
                         <div style={{ width: '35%', height: '100%', background: 'var(--primary)' }} />
                       </div>
-                      <div style={{ position: 'absolute', top: -10, right: -10, padding: '0.25rem 0.5rem', borderRadius: 6, background: 'white', fontSize: '0.6875rem', fontWeight: 700, color: 'var(--fg)', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>20 min</div>
+                      <div style={{ position: 'absolute', top: -10, right: -10, padding: '0.25rem 0.5rem', borderRadius: 6, background: 'white', fontSize: '0.6875rem', fontWeight: 700, color: 'var(--fg)', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>30 min</div>
                     </div>
                   ),
                 },
                 {
                   num: '03',
                   title: 'Reprograme sua mente',
-                  desc: 'Siga o método para reprogramar sua autoimagem e criar hábitos que vão acelerar seus resultados — e manter o que você conquistou.',
+                  desc: 'Siga o método para reprogramar sua autoimagem e criar hábitos que vão acelerar seus resultados para manter o que você conquistou.',
                   bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
                   visual: (
                     <div style={{ position: 'relative', width: 96, height: 96, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -538,7 +551,7 @@ export default function App() {
                 'Quer um treino em casa, de 20 a 30 minutos, sem precisar de nenhum equipamento',
                 'Está com a barriga inchada e quer firmar o corpo de forma progressiva',
                 'Quer poder curtir churrasco, pizza e aniversário sem destruir o resultado',
-                'Já começou mais de uma vez e desta vez quer chegar até o fim de verdade',
+                'Já tentou de tudo, desistiu na primeira semana, e quer um método que finalmente encaixe na sua vida',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderRadius: '1rem', background: 'white', padding: '1rem 1.5rem', textAlign: 'left', boxShadow: '0 4px 20px rgba(26,26,46,0.04)' }}>
                   <div style={{ display: 'flex', height: 32, width: 32, flexShrink: 0, alignItems: 'center', justifyContent: 'center', borderRadius: '50%', background: 'rgba(22,163,74,0.1)' }}>
@@ -684,6 +697,9 @@ export default function App() {
               Você tem duas escolhas agora.
             </h2>
             <p style={{ marginTop: '1rem', fontSize: '1.125rem', color: 'var(--muted)', lineHeight: 1.7 }}>
+              Eu sei o que é chegar até aqui, sentir que algo pode ser diferente desta vez, e ainda assim travar. Essa dúvida é real. Mas ela não vai sumir esperando. Ela some quando você toma uma decisão.
+            </p>
+            <p style={{ marginTop: '0.75rem', fontSize: '1.125rem', color: 'var(--muted)', lineHeight: 1.7 }}>
               Só existem dois caminhos daqui pra frente, e você já sabe qual é cada um deles.
             </p>
 
@@ -745,16 +761,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════════
-            13. RECAPITULAÇÃO DA OFERTA — cópia exata do bloco 9
-            ═══════════════════════════════════════════════ */}
-        <section id="oferta-2" className="lt-section">
-          <div className="lt-orb" style={{ width: 600, height: 600, background: 'rgba(244,162,97,0.2)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
-          <div style={{ position: 'relative', zIndex: 10, maxWidth: '56rem', margin: '0 auto', padding: '0 1.25rem' }}>
-            <CTABlock checkoutUrl={CHECKOUT_URL} />
-          </div>
-        </section>
-
         {/* ════════════════ 14. FAQ ════════════════ */}
         <section className="lt-section">
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
@@ -799,6 +805,16 @@ export default function App() {
                 a="A maioria das mulheres relata sentir diferença na barriga ainda na primeira semana. Resultados visíveis no espelho aparecem entre 10 e 21 dias, dependendo da consistência. Em 30 dias completos, a diferença é inegável."
               />
             </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════
+            13. RECAPITULAÇÃO DA OFERTA — cópia exata do bloco 9
+            ═══════════════════════════════════════════════ */}
+        <section id="oferta-2" className="lt-section">
+          <div className="lt-orb" style={{ width: 600, height: 600, background: 'rgba(244,162,97,0.2)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
+          <div style={{ position: 'relative', zIndex: 10, maxWidth: '56rem', margin: '0 auto', padding: '0 1.25rem' }}>
+            <CTABlock checkoutUrl={CHECKOUT_URL} />
           </div>
         </section>
 
@@ -875,7 +891,7 @@ function CTABlock({ checkoutUrl }: { checkoutUrl: string }) {
               className="lt-btn-cta"
               style={{ position: 'relative' }}
             >
-              Clique aqui para ter acesso
+              Quero transformar meu corpo
             </a>
           </div>
 
