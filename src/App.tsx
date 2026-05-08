@@ -761,6 +761,16 @@ export default function App() {
           </div>
         </section>
 
+        {/* ═══════════════════════════════════════════════
+            13. RECAPITULAÇÃO DA OFERTA — cópia exata do bloco 9
+            ═══════════════════════════════════════════════ */}
+        <section id="oferta-2" className="lt-section">
+          <div className="lt-orb" style={{ width: 600, height: 600, background: 'rgba(244,162,97,0.2)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
+          <div style={{ position: 'relative', zIndex: 10, maxWidth: '56rem', margin: '0 auto', padding: '0 1.25rem' }}>
+            <CTABlock checkoutUrl={CHECKOUT_URL} />
+          </div>
+        </section>
+
         {/* ════════════════ 14. FAQ ════════════════ */}
         <section className="lt-section">
           <div style={{ position: 'relative', zIndex: 10, maxWidth: '48rem', margin: '0 auto', padding: '0 1.25rem' }}>
@@ -805,16 +815,6 @@ export default function App() {
                 a="A maioria das mulheres relata sentir diferença na barriga ainda na primeira semana. Resultados visíveis no espelho aparecem entre 10 e 21 dias, dependendo da consistência. Em 30 dias completos, a diferença é inegável."
               />
             </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════
-            13. RECAPITULAÇÃO DA OFERTA — cópia exata do bloco 9
-            ═══════════════════════════════════════════════ */}
-        <section id="oferta-2" className="lt-section">
-          <div className="lt-orb" style={{ width: 600, height: 600, background: 'rgba(244,162,97,0.2)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
-          <div style={{ position: 'relative', zIndex: 10, maxWidth: '56rem', margin: '0 auto', padding: '0 1.25rem' }}>
-            <CTABlock checkoutUrl={CHECKOUT_URL} />
           </div>
         </section>
 
